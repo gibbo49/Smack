@@ -30,8 +30,8 @@
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="ChrisG"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:layout_constraintBottom_toTopOf="@+id/user_email_nav_header"
         app:layout_constraintStart_toEndOf="@+id/user_image_nav_header"
-        app:layout_constraintTop_toTopOf="@+id/user_image_nav_header"
         tools:text="ChrisG" />
 
     <TextView
@@ -40,8 +40,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="Chris@Devslopes.com"
+        app:layout_constraintBottom_toBottomOf="@+id/user_image_nav_header"
         app:layout_constraintStart_toEndOf="@+id/user_image_nav_header"
-        app:layout_constraintTop_toBottomOf="@+id/username_nav_header"
         tools:text="Chris@Devslopes.com" />
 
     <Button
