@@ -2,7 +2,6 @@ package com.chrisgibson.smack.Services
 
 import android.content.Context
 import android.util.Log
-import android.widget.Toast
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
@@ -28,11 +27,9 @@ object AuthService {
         val requestBody = jsonBody.toString()
 
         val registerRequest = object : StringRequest(Method.POST, URL_REGISTER, Response.Listener {response ->
-            Toast.makeText(context, response, Toast.LENGTH_LONG).show()
             complete(true)
         }, Response.ErrorListener {error ->
             Log.d ("ERROR", "Could not register user: $error")
-            Toast.makeText(context, "Could not register user: $error", Toast.LENGTH_LONG).show()
             complete(false)
         }){
             override fun getBodyContentType(): String {
@@ -59,17 +56,14 @@ object AuthService {
                userEmail = response.getString("user")
                authToken = response.getString("token")
                isLoggedIn = true
-               Toast.makeText(context, "User logged in.", Toast.LENGTH_LONG).show()
                complete(true)
            } catch (e: JSONException) {
                Log.d("JSON", "EXC:" + e.localizedMessage)
-               Toast.makeText(context, "Could not login user.", Toast.LENGTH_LONG).show()
                complete(false)
            }
 
         }, Response.ErrorListener { error ->
             Log.d ("ERROR", "Could not login user: $error")
-            Toast.makeText(context, "Could not login user: $error", Toast.LENGTH_LONG).show()
             complete(false)
 
         }) {
@@ -102,14 +96,12 @@ object AuthService {
 
             }catch (e: JSONException){
                 Log.d("JSON", "EXC" + e.localizedMessage)
-                Toast.makeText(context, "Could not add user.", Toast.LENGTH_LONG).show()
                 complete(false)
             }
 
 
         }, Response.ErrorListener { error ->
             Log.d ("ERROR", "Could not add user: $error")
-            Toast.makeText(context, "Could not add user: $error", Toast.LENGTH_LONG).show()
             complete(false)
         }) {
             override fun getBodyContentType(): String {
