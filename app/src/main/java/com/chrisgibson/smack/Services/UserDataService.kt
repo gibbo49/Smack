@@ -1,6 +1,7 @@
 package com.chrisgibson.smack.Services
 
 import android.graphics.Color
+import com.chrisgibson.smack.Controller.App
 import java.util.*
 
 object UserDataService {
@@ -34,8 +35,8 @@ object UserDataService {
         avatarName = ""
         avatarColor = ""
         name = ""
-        AuthService.authToken = ""
-        AuthService.userEmail = ""
-        AuthService.isLoggedIn = false
+        App.prefs.authToken = ""
+        App.prefs.userEmail = ""
+        App.prefs.isLoggedIn = false
     }
 }
